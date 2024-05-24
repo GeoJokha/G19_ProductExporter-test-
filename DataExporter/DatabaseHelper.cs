@@ -110,12 +110,14 @@ namespace DataExporter
                 _transaction!.Rollback();
                 _transaction = null;
             }
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            public void Dispose()
+            {
+                
+                CloseConnection();
+
+            }
 
         }
-        }
+
     }
-
 }

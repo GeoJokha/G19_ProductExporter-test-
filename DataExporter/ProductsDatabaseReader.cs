@@ -48,9 +48,9 @@ namespace DataExporter
             List<Category> products = new();
             using (SqlConnection connection = OpenConnection())
             {
-                string query = "SELECT c.Name, p.Code, p.Name, p.Price " +
+                string query = "SELECT c.CategoryName, p.ProductID, p.ProductName, p.UnitPrice " +
                                "FROM Categories c " +
-                               "JOIN Products p ON c.Id = p.CategoryId";
+                               "JOIN Products p ON c.CategoryID = p.CategoryId";
                 using (SqlCommand command = GetCommand(query))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -59,20 +59,20 @@ namespace DataExporter
                         while (reader.Read())
                         {
                             string categoryName = reader.GetString(0);
-                            if (category == null || category.Name != categoryName)
+                            if (category == null || category.CategoryName != categoryName)
                             {
                                 category = new Category()
                                 {
-                                    Name = categoryName,
+                                    CategoryName = categoryName,
                                 };
                                 products.Add(category);
                             }
 
                             Product product = new Product()
                             {
-                                Code = reader.GetString(1),
-                                Name = reader.GetString(2),
-                                Price = reader.GetDecimal(3),
+                                //ProductID = reader.GetString(1),
+                                ProductName = reader.GetString(2),
+                                UnitPrice = reader.GetDecimal(3),
                             };
 
                             category.Products.Add(product);

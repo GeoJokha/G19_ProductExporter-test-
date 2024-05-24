@@ -18,10 +18,10 @@
             using StreamWriter writer = new(filePath);
             foreach (Category category in categories)
             {
-                writer.WriteLine(category.Name);
+                writer.WriteLine(category.CategoryName);
                 foreach (Product product in category.Products)
                 {
-                    writer.WriteLine($"{product.Code};{product.Name};{product.Price}");
+                    writer.WriteLine($"{product.ProductID};{product.ProductName};{product.UnitPrice}");
                 }
             }
         }

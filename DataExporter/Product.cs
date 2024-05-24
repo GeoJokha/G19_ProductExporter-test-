@@ -2,18 +2,18 @@
 
 public class Product
 {
-    public string Code { get; set; } = null!;
-    public string Name { get; set; } = null!;
-    public decimal Price { get; set; }
+    public string ProductID { get; set; } = null!;
+    public string ProductName { get; set; } = null!;
+    public decimal UnitPrice { get; set; }
 
     public static Product GetProduct(string[] parts)
     {
         return new Product()
         {
-            Code = parts[2],
-            Name = parts[3],
-            Price = decimal.Parse(parts[4]),
+            ProductID = parts[2],
+            ProductName = parts[3],
+            UnitPrice = decimal.Parse(parts[4]),
         };
     }
-    public override string ToString() => $"Code: {Code}, Name: {Name}, Price: {Price:0.00}";
+    public override string ToString() => $"Code: {ProductID}, Name: {ProductName}, Price: {UnitPrice:0.00}";
 }

@@ -12,8 +12,8 @@ namespace G19_ProductExporter
     {
         static void Main(string[] args)
         {
-            const string filePath = @"C:\products.txt";
-            const string connectionString = "Server=.;Database=NorthWind;Integrated Security=true";
+            const string filePath = @"D:\products.txt";
+            const string connectionString = "Server=DESKTOP-ANU2LNI;Database=NorthWind;Integrated Security=true;TrustServerCertificate=true";
             ProductsDatabaseReader reader = new(connectionString);
             ProductsFileDataWriter writer = new();
             writer.WriteProducts(reader.GetProducts(), filePath);
